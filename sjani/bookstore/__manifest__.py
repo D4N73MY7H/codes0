@@ -1,0 +1,20 @@
+{
+    'name': 'Bookstore SJ',
+    'version': '1.0',
+    'summary': 'Summery',
+    'description': 'Description',
+    'category': 'commprog',
+    'author': 'Author',
+    'website': 'web',
+    'depends': ['base'],
+    'data': [
+        'views/book_view.xml',
+        'views/author_view.xml',
+        'views/publisher_view.xml',
+        'views/category_view.xml',
+        'views/invoice_view.xml',
+    ],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="book_form_view" model="ir.ui.view">
+            <field name="name">bookstore.book.form</field>
+            <field name="model">bookstore.book</field>
+            <field name="arch" type="xml">
+                <form string="Book">
+                    <header>
+                        <button string="Check Stock Levels" type="object" class="oe_highlight" name="check_stock_levels"/>
+                    </header>
+                    <sheet>
+                        <label for="title"/>
+                        <h1>
+                            <field name="title" placeholder="Title"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="purchase_price"/>
+                                <field name="sale_price"/>
+                                <field name="quantity_in_stock"/>
+                                <field name="min_quantity"/>
+                                <field name="publication_year"/>
+                                 <field name="publisher_id"/>
+                            </group>
+                            <group>
+
+                                <field name="author_ids" widget="many2many_tags"/>
+                                <field name="category_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="book_tree_view" model="ir.ui.view">
+            <field name="name">bookstore.book.tree</field>
+            <field name="model">bookstore.book</field>
+            <field name="arch" type="xml">
+                <tree string="Book" decoration-danger="quantity_in_stock &lt; min_quantity" __validate__="1">
+                    <field name="title"  decoration-success="quantity_in_stock &gt;= min_quantity"/>
+                    <field name="publication_year"/>
+                    <field name="min_quantity" invisible="1"/>
+                     <field name="quantity_in_stock" invisible="1"/>
+<!--                    <field name="quantity_in_stock" options="{'decorations': 'red:quantity_in_stock &lt; min_quantity, green:quantity_in_stock &gt;= min_quantity'}"/>-->
+<!--                    <field name="quantity_in_stock" decoration-danger="quantity_in_stock &lt; min_quantity"/>-->
+<!--                     <field name="quantity_in_stock" decoration-danger="domain:[('quantity_in_stock', '<', 'min_quantity')]"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="book_search_view" model="ir.ui.view">
+            <field name="name">bookstore.book.search</field>
+            <field name="model">bookstore.book</field>
+            <field name="arch" type="xml">
+                <search string="Book">
+                    <group>
+                        <field name="title"/>
+                         <field name="min_quantity"/>
+                          <field name="quantity_in_stock"/>
+                        <filter string="Books with Sale Price > 20" name="filter_sale_price_gt_20" domain="[('sale_price', '>', 20)]"/>
+<!--                         <filter string="Books with Quantity Under Min Quantity" name="filter_quantity_under_min" domain="[('quantity_in_stock', '&lt;', min_quantity)]"/>-->
+<!--                        <filter string="Books with Quantity Under Min Quantity" name="filter_quantity_under_min" domain="[('quantity_in_stock', '<', 4)]"/>-->
+<!--                        <filter name="filter_kot" string="kot" domain="[('quantity_in_stock', '&lt;', min_quantity)]"/>-->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="book_act_window" model="ir.actions.act_window">
+            <field name="name">Book</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bookstore.book</field>
+             <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no example; click here to add a new Book.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="bookstore_root" name="BookStore" sequence="10"/>
+        <menuitem name="Book" id="book_menu" parent="bookstore_root" action="book_act_window"/>
+    </data>
+</odoo>

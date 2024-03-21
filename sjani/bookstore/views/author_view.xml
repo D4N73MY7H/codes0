@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="author_form_view" model="ir.ui.view">
+            <field name="name">bookstore.author.form</field>
+            <field name="model">bookstore.author</field>
+            <field name="arch" type="xml">
+                <form string="Author">
+                    <sheet>
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Name"/>
+                            </h1>
+                        <group>
+                            <group>
+                                <field name="birthdate"/>
+                                 <field name="nationality"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="author_tree_view" model="ir.ui.view">
+            <field name="name">bookstore.author.tree</field>
+            <field name="model">bookstore.author</field>
+            <field name="arch" type="xml">
+                <tree string="Author">
+                     <field name="name"/>
+                    <field name="birthdate"/>
+                    <field name="nationality"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="author_search_view" model="ir.ui.view">
+            <field name="name">bookstore.author.search</field>
+            <field name="model">bookstore.author</field>
+            <field name="arch" type="xml">
+                <search string="Author">
+                    <group>
+                         <field name="name"/>
+                        <field name="birthdate"/>
+                        <field name="nationality"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="author_act_window" model="ir.actions.act_window">
+            <field name="name">Author</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bookstore.author</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Author.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Author" id="author_menu" parent="bookstore_root" action="author_act_window"/>
+
+    </data>
+</odoo>

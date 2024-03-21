@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!--    Create Tree View-->
+        <record id="view_academic_years_tree" model="ir.ui.view">
+            <field name="name">academic.years.tree</field>
+            <field name="model">academic.years</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="academic_year"/>
+                    <field name="default_val"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    Create Form View-->
+<!--        <record id="view_academic_years_form" model="ir.ui.view">-->
+<!--            <field name="name">academic.years.form</field>-->
+<!--            <field name="model">academic.years</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form>-->
+<!--                    <sheet>-->
+<!--                        <group>-->
+<!--                            <field name="academic_year"/>-->
+<!--                            <field name="default_val"/>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <!--        Menu Action-->
+        <record id="action_academic_years" model="ir.actions.act_window">
+            <field name="name">Academic Years</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">academic.years</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new Academic Year!
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

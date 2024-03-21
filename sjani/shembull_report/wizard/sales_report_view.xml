@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_sale_report" model="ir.ui.view">
+            <field name="name">Sales Report</field>
+            <field name="model">sales.report</field>
+            <field name="arch" type="xml">
+                <form string="Sales Report">
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                        <button name="print_report"
+                                string="Print"
+                                type="object"
+                                data-hotkey="q"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            </field>
+
+        </record>
+
+        <record id="action_sale_report" model="ir.actions.act_window">
+            <field name="name">Sales report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sales.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_sale_report"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+
+<!--        <menuitem id="menu_account_report" name="Raportet e Pergjithshme" parent="account_accountant.menu_accounting"-->
+<!--                  sequence="100"/>-->
+        <menuitem id="menu_acc_rapo" name="Raporti Sales Not Paid" parent="menu_account_report"
+                  action="action_sale_report"/>
+
+    </data>
+</odoo>

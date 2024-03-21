@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="staf_form_view" model="ir.ui.view">
+            <field name="name">dentisti.staf.form</field>
+            <field name="model">dentisti.staf</field>
+            <field name="arch" type="xml">
+                <form string="staf">
+                    <sheet>
+                            <h1>
+                                <field name="emri" placeholder="emri"/>
+                            </h1>
+                        <group>
+                            <group>
+                                <field name="mbiemri"/>
+                                <field name="email"/>
+                                <field name="pozicioni"/>
+                            </group>
+                            <group>
+                                <field name="rroga"/>
+                                <field name="d_punesimi"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="staf_tree_view" model="ir.ui.view">
+            <field name="name">dentisti.staf.tree</field>
+            <field name="model">dentisti.staf</field>
+            <field name="arch" type="xml">
+                <tree string="staf">
+                    <field name="emri"/>
+                    <field name="pozicioni"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="staf_search_view" model="ir.ui.view">
+            <field name="name">dentisti.staf.search</field>
+            <field name="model">dentisti.staf</field>
+            <field name="arch" type="xml">
+                <search string="staf">
+                    <group expand="1" string="Group By">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="staf_act_window" model="ir.actions.act_window">
+            <field name="name">Staf</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dentisti.staf</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new staf.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="staf" id="staf_menu" parent="dentist_root" action="staf_act_window"/>
+
+    </data>
+</odoo>

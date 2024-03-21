@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="category_form_view" model="ir.ui.view">
+            <field name="name">bookstore.category.form</field>
+            <field name="model">bookstore.category</field>
+            <field name="arch" type="xml">
+                <form string="Category">
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="category_tree_view" model="ir.ui.view">
+            <field name="name">bookstore.category.tree</field>
+            <field name="model">bookstore.category</field>
+            <field name="arch" type="xml">
+                <tree string="Category">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="category_search_view" model="ir.ui.view">
+            <field name="name">bookstore.category.search</field>
+            <field name="model">bookstore.category</field>
+            <field name="arch" type="xml">
+                <search string="Category">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="category_act_window" model="ir.actions.act_window">
+            <field name="name">Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bookstore.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Category.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Category" id="category_menu" parent="bookstore_root" action="category_act_window"/>
+
+    </data>
+</odoo>

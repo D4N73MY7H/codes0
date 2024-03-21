@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="activity_sj_form_view" model="ir.ui.view">
+            <field name="name">activity.activity_sj.form</field>
+            <field name="model">activity.activity_sj</field>
+            <field name="arch" type="xml">
+                <form string="Veprimtarite">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Name"/>
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="activity_sj_tree_view" model="ir.ui.view">
+            <field name="name">activity.activity_sj.tree</field>
+            <field name="model">activity.activity_sj</field>
+            <field name="arch" type="xml">
+                <tree string="Veprimtarite">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="activity_sj_search_view" model="ir.ui.view">
+            <field name="name">activity.activity_sj.search</field>
+            <field name="model">activity.activity_sj</field>
+            <field name="arch" type="xml">
+                <search string="Veprimtarite">
+                     <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="activity_sj_act_window" model="ir.actions.act_window">
+            <field name="name">Veprimtarite</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">activity.activity_sj</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Veprimtarite" id="activity_sj_menu" parent="formimi_intelektual_shkencor_root_sj" action="activity_sj_act_window"/>
+
+    </data>
+</odoo>

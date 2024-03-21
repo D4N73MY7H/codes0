@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="trajtim_form_view" model="ir.ui.view">
+            <field name="name">dentisti.trajtim.form</field>
+            <field name="model">dentisti.trajtim</field>
+            <field name="arch" type="xml">
+                <form string="trajtim">
+                    <sheet>
+                            <h1>
+                                <field name="trajtim" placeholder="Pershkrimi"/>
+                            </h1>
+                        <group>
+                            <group>
+                                <field name="pacient_id"/>
+                                <field name="seanc_id"/>
+                                <field name="staf_id" domain = "[('pozicioni', '=', 'dentisti')]"/>
+                            </group>
+                            <group>
+                                <field name="data"/>
+                                <field name="sherbimi_id"/>
+                                <field name="cmimi_sherbimit"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="trajtim_tree_view" model="ir.ui.view">
+            <field name="name">dentisti.trajtim.tree</field>
+            <field name="model">dentisti.trajtim</field>
+            <field name="arch" type="xml">
+                <tree string="trajtim">
+                    <field name="pacient_id"/>
+                    <field name="staf_id"/>
+                    <field name="data"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="trajtim_search_view" model="ir.ui.view">
+            <field name="name">dentisti.trajtim.search</field>
+            <field name="model">dentisti.trajtim</field>
+            <field name="arch" type="xml">
+                <search string="trajtim">
+                    <group expand="1" string="Group By">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="trajtim_act_window" model="ir.actions.act_window">
+            <field name="name">Trajtim</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dentisti.trajtim</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="trajtim" id="trajtim_menu_master" parent="trajtim_menu" action="trajtim_act_window"/>
+        <menuitem name="trajtim" id="trajtim_menu" parent="dentist_root" action="trajtim_act_window"/>
+
+    </data>
+</odoo>

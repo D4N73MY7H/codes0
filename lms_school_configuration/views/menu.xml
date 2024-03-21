@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!--            Main Menu-->
+        <menuitem id="menu_configuration_root"
+                  name="Configurations"
+                  web_icon="lms_school_configuration,static/description/icon.png"
+                  sequence="10"/>
+
+        <!--    Submenu item "Grades"-->
+        <menuitem id="menu_grades_master"
+                  name="Grades"
+                  parent="menu_configuration_root"
+                  action="action_school_grades"
+                  sequence="2"/>
+
+        <!--    Submenu item "Subjects"-->
+        <menuitem id="menu_subjects_master"
+                  name="Subjects"
+                  parent="menu_configuration_root"
+                  action="action_school_subjects"
+                  sequence="3"/>
+
+<!--        Submenu item "Grade Intervals"-->
+        <menuitem id="menu_grade_interval_view"
+                  name="Grade Interval"
+                  action="action_school_grade_interval"
+                  parent="menu_configuration_root"
+                  sequence="4"/>
+
+        <!--        Submenu item "Academic Years"-->
+        <menuitem id="menu_academic_years_view"
+                  name="Academic Year"
+                  action="action_academic_years"
+                  parent="menu_configuration_root"
+                  sequence="5"/>
+
+        <!--        Submenu item "Academic Quarters"-->
+        <menuitem id="menu_academic_quarters_view"
+                  name="Academic Quarter"
+                  action="action_academic_quarters"
+                  parent="menu_configuration_root"
+                  sequence="6"/>
+
+        <!--        Submenu item "Event Type"-->
+        <menuitem id="menu_event_type_view"
+                  name="Event Type"
+                  action="action_event_type"
+                  parent="menu_configuration_root"
+                  sequence="7"/>
+
+    </data>
+
+
+</odoo>

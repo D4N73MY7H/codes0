@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!--    Create Tree View-->
+        <record id="view_school_subjects_tree" model="ir.ui.view">
+            <field name="name">school.subjects.tree</field>
+            <field name="model">school.subjects</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="subject"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    Create Form View-->
+        <record id="view_school_subjects_form" model="ir.ui.view">
+            <field name="name">school.subjects.form</field>
+            <field name="model">school.subjects</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="subject"
+                                   options='{"no_open": True, "no_create": True}'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Menu Action-->
+        <record id="action_school_subjects" model="ir.actions.act_window">
+            <field name="name">Subjects</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.subjects</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new Subject Record!
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

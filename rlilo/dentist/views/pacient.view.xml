@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="pacient_form_view" model="ir.ui.view">
+            <field name="name">dentisti.pacient.form</field>
+            <field name="model">dentisti.pacient</field>
+            <field name="arch" type="xml">
+                <form string="pacient">
+                    <sheet>
+                            <h1>
+                                <field name="emri" placeholder="Pacient"/>
+                            </h1>
+                        <group>
+                            <group>
+                                <field name="mbiemri"/>
+                                <field name="nr_tel"/>
+                            </group>
+                            <group>
+                                <field name="gr_gjaku"/>
+                                <field name="gjini"/>
+                                <field name="alergji_id" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pacient_tree_view" model="ir.ui.view">
+            <field name="name">dentisti.pacient.tree</field>
+            <field name="model">dentisti.pacient</field>
+            <field name="arch" type="xml">
+                <tree string="Pacient">
+                    <field name="emri"/>
+                    <field name="mbiemri"/>
+                    <field name="gr_gjaku"/>
+                    <field name="gjini"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pacient_search_view" model="ir.ui.view">
+            <field name="name">dentisti.pacient.search</field>
+            <field name="model">dentisti.pacient</field>
+            <field name="arch" type="xml">
+                <search string="Pacient">
+                    <group expand="1" string="Group By">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="pacient_act_window" model="ir.actions.act_window">
+            <field name="name">Pacinet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dentisti.pacient</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="dentist_root" name="Dentist" sequence="0"/>
+        <menuitem name="Pacinet" id="pacient_menu" parent="dentist_root" action="pacient_act_window"/>
+
+    </data>
+</odoo>

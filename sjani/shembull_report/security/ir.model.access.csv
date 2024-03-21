@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+shembull_report.access_silvester_report,access_silvester_report,shembull_report.model_silvester_report,base.group_user,1,1,1,1
+shembull_report.access_sales_report,access_sales_report,shembull_report.model_sales_report,base.group_user,1,1,1,1

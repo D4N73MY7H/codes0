@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="month_1" model="all.months">
+        <field name="month">January</field>
+    </record>
+
+    <record id="month_2" model="all.months">
+        <field name="month">February</field>
+    </record>
+
+    <record id="month_3" model="all.months">
+        <field name="month">March</field>
+    </record>
+
+    <record id="month_4" model="all.months">
+        <field name="month">April</field>
+    </record>
+
+    <record id="month_5" model="all.months">
+        <field name="month">May</field>
+    </record>
+
+    <record id="month_6" model="all.months">
+        <field name="month">June</field>
+    </record>
+
+    <record id="month_7" model="all.months">
+        <field name="month">July</field>
+    </record>
+
+    <record id="month_8" model="all.months">
+        <field name="month">August</field>
+    </record>
+
+    <record id="month_9" model="all.months">
+        <field name="month">September</field>
+    </record>
+
+    <record id="month_10" model="all.months">
+        <field name="month">October</field>
+    </record>
+
+    <record id="month_11" model="all.months">
+        <field name="month">November</field>
+    </record>
+
+    <record id="month_12" model="all.months">
+        <field name="month">December</field>
+    </record>
+
+</odoo>

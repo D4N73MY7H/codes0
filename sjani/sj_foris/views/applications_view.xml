@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="application_sj_form_view" model="ir.ui.view">
+            <field name="name">application.application_sj.form</field>
+            <field name="model">application.application_sj</field>
+            <field name="arch" type="xml">
+                <form string="Aplikime">
+                    <sheet>
+                         <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="surname"/>
+                                <field name="email"/>
+                                <field name="phone_number"/>
+                            </group>
+                            <group>
+                                <field name="job"/>
+                                <field name="institution"/>
+                                <field name="content"/>
+                                <field name="upload_file" widget="binary"/>
+                            </group>
+                              <group>
+                                <field name="nr_amzes"/>
+                                <field name="nr_rendor"/>
+                                <field name="school_name"/>
+                                <field name="professor_name"/>
+                                  <field name="professor_email"/>
+                            </group>
+
+                             <group>
+                                <field name="article_id"/>
+                                <field name="publishment_id"/>
+                                <field name="translation_id"/>
+                                <field name="consultation_id"/>
+                                 <field name="translation_id"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="application_sj_tree_view" model="ir.ui.view">
+            <field name="name">application.application_sj.tree</field>
+            <field name="model">application.application_sj</field>
+            <field name="arch" type="xml">
+                <tree string="Aplikime">
+                    <field name="name"/>
+                    <field name="surname"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="application_sj_search_view" model="ir.ui.view">
+            <field name="name">application.application_sj.search</field>
+            <field name="model">application.application_sj</field>
+            <field name="arch" type="xml">
+                <search string="Aplikime">
+                          <field name="name"/>
+                        <field name="surname"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="application_sj_act_window" model="ir.actions.act_window">
+            <field name="name">ModelTitle</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">application.application_sj</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Aplikime" id="application_sj_menu" parent="formimi_intelektual_shkencor_root_sj" action="application_sj_act_window"/>
+
+    </data>
+</odoo>

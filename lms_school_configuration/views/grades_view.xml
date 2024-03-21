@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!--    Create Tree View-->
+        <record id="view_school_grade_tree" model="ir.ui.view">
+            <field name="name">school.grades.tree</field>
+            <field name="model">school.grades</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="grade"/>
+                    <field name="tuition"/>
+                    <field name="color" widget="color_picker"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    Create Form View-->
+        <record id="view_school_grade_form" model="ir.ui.view">
+            <field name="name">school.grades.form</field>
+            <field name="model">school.grades</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="grade"/>
+                            <field name="tuition"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Menu Action-->
+        <record id="action_school_grades" model="ir.actions.act_window">
+            <field name="name">Grades</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.grades</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new Grade Record!
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

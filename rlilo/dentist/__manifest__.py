@@ -1,0 +1,20 @@
+{
+    'name': 'dentist',
+    'version': '1.0',
+    'category': 'addons_intern',
+    'sequence': -100,
+    'summary': 'Sistem dentist',
+    'website': 'web',
+    'depends': [],
+    'data': [
+        'views/pacient.view.xml',
+        'views/staf.view.xml',
+        'views/sherbimet.view.xml',
+        'views/trajtim.view.xml',
+        'views/fatur.view.xml',
+    ],
+    'demo': [],
+    "application": True,
+    'auto_install': False,
+    "installable": True,
+}

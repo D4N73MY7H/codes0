@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="fatur_form_view" model="ir.ui.view">
+            <field name="name">dentisti.fatur.form</field>
+            <field name="model">dentisti.fatur</field>
+            <field name="arch" type="xml">
+                <form string="Fatur">
+                    <sheet>
+                            <h1>
+                                <field name="staf_id" placeholder="Debtisti"/>
+                            </h1>
+                        <group>
+                            <group>
+                                <field name="pacient_id"/>
+                            </group>
+                            <group>
+                                <field name="data"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+
+                            <page string="Dentist" name="dentist">
+                                <field name="trajtmi_lines_ids">
+                                    <tree editable="botton">
+                                            <field name="trajtim_id"/>
+                                            <field name="cmime"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="trajtim_id"/>
+                                        </group>
+                                        <group>
+                                            <field name="cmime"/>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name="total"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="fatur_tree_view" model="ir.ui.view">
+            <field name="name">dentisti.fatur.tree</field>
+            <field name="model">dentisti.fatur</field>
+            <field name="arch" type="xml">
+                <tree string="Fatur">
+                    <field name="staf_id"/>
+                    <field name="pacient_id"/>
+                    <field name="total"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="fatur_search_view" model="ir.ui.view">
+            <field name="name">dentisti.fatur.search</field>
+            <field name="model">dentisti.fatur</field>
+            <field name="arch" type="xml">
+                <search string="Fatur">
+                    <group expand="1" string="Group By">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="fatur_act_window" model="ir.actions.act_window">
+            <field name="name">Fatur</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dentisti.fatur</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Fatur" id="fatur_menu" parent="dentist_root" action="fatur_act_window"/>
+
+    </data>
+</odoo>

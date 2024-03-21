@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sherbimet_form_view" model="ir.ui.view">
+            <field name="name">dentisti.sherbimet.form</field>
+            <field name="model">dentisti.sherbimet</field>
+            <field name="arch" type="xml">
+                <form string="sherbimet">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="e_sherbimi"/>
+                            </group>
+                            <group>
+                                <field name="cmimi"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sherbimet_tree_view" model="ir.ui.view">
+            <field name="name">dentisti.sherbimet.tree</field>
+            <field name="model">dentisti.sherbimet</field>
+            <field name="arch" type="xml">
+                <tree string="Sherbimet">
+                    <field name="e_sherbimi"/>
+                    <field name="cmimi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sherbimet_search_view" model="ir.ui.view">
+            <field name="name">dentisti.dentist_root.search</field>
+            <field name="model">dentisti.sherbimet</field>
+            <field name="arch" type="xml">
+                <search string="ModelTitle">
+                    <group expand="1" string="Group By">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="sherbimet_act_window" model="ir.actions.act_window">
+            <field name="name">Sherbimet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dentisti.sherbimet</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="sherbimet" id="sherbimet_menu" parent="trajtim_menu" action="sherbimet_act_window"/>
+
+    </data>
+</odoo>

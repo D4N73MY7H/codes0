@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="talents_sj_form_view" model="ir.ui.view">
+            <field name="name">talents.talents_sj.form</field>
+            <field name="model">talents.talents_sj</field>
+            <field name="arch" type="xml">
+                <form string="Talents">
+                    <group>
+                        <field name="name"/>
+                        <field name="nr_amzes"/>
+                        <field name="nr_rendor"/>
+                    </group>
+                    <group>
+                        <field name="age"/>
+                        <field name="student_email"/>
+                        <field name="cel"/>
+                        <field name="image" filename="img_name" widget="image"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="talents_sj_tree_view" model="ir.ui.view">
+            <field name="name">talents.talents_sj.tree</field>
+            <field name="model">talents.talents_sj</field>
+            <field name="arch" type="xml">
+                <tree string="Talents">
+                    <field name="name"/>
+                    <field name="nr_amzes"/>
+                    <field name="student_email"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="talents_sj_search_view" model="ir.ui.view">
+            <field name="name">talents.talents_sj.search</field>
+            <field name="model">talents.talents_sj</field>
+            <field name="arch" type="xml">
+                <search string="Talents">
+                    <field name="name"/>
+                    <field name="nr_amzes"/>
+                    <field name="age"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="talents_sj_act_window" model="ir.actions.act_window">
+            <field name="name">Talents</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">talents.talents_sj</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="formimi_intelektual_shkencor_root_sj" name="Foris" sequence="10"/>
+        <menuitem name="Talente te reja" id="student_menu" parent="formimi_intelektual_shkencor_root_sj"
+                  action="talents_sj_act_window"/>
+    </data>
+</odoo>

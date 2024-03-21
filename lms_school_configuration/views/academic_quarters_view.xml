@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!--    Create Tree View-->
+        <record id="view_academic_quarters_tree" model="ir.ui.view">
+            <field name="name">academic.quarters.tree</field>
+            <field name="model">academic.quarters</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="academic_quarter"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    Create Form View-->
+        <record id="view_academic_quarters_form" model="ir.ui.view">
+            <field name="name">academic.quarters.form</field>
+            <field name="model">academic.quarters</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="academic_quarter"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Menu Action-->
+        <record id="action_academic_quarters" model="ir.actions.act_window">
+            <field name="name">Academic Years</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">academic.quarters</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new Academic Quarter!
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
