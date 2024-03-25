@@ -7,9 +7,13 @@
             <field name="arch" type="xml">
                 <form string="Book">
                     <header>
-                        <button string="Check Stock Levels" type="object" class="oe_highlight" name="check_stock_levels"/>
+                        <button string="Check Stock Levels" type="object" class="oe_highlight"
+                                name="check_stock_levels"/>
                     </header>
                     <sheet>
+                        <h2>
+                            <field name="priority" widget="priority" class="mr-4"/>
+                        </h2>
                         <label for="title"/>
                         <h1>
                             <field name="title" placeholder="Title"/>
@@ -21,7 +25,9 @@
                                 <field name="quantity_in_stock"/>
                                 <field name="min_quantity"/>
                                 <field name="publication_year"/>
-                                 <field name="publisher_id"/>
+                                <field name="publisher_id"/>
+                                <field name="tags" widget="many2many_tags"/>
+                                <field name="image" filename="img_name" class="oe_avatar" widget="image"/>
                             </group>
                             <group>
 
@@ -29,23 +35,134 @@
                                 <field name="category_ids" widget="many2many_tags"/>
                             </group>
                         </group>
+
+                        <notebook>
+                            <page string="Summarie">
+                                <field name="Summarie"/>
+                            </page>
+                            <page string="Awards">
+                                <field name="Awards"/>
+                            </page>
+                            <page string="Tags">
+                                <field name="tags" widget="many2many_tags"/>
+                            </page>
+
+
+                        </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+
+
                 </form>
             </field>
         </record>
+
+
+        <record id="book_kanban_view" model="ir.ui.view">
+            <field name="name">bookstore.book.kanban</field>
+            <field name="model">bookstore.book</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="title"/>
+                    <field name="quantity_in_stock"/>
+                    <field name="min_quantity"/>
+                    <field name="publisher_id"/>
+                    <field name="author_ids"/>
+                    <field name="id"/>
+                    <field name="image" widget="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="o_kanban_image">
+                                            <img class="img-thumbnail"
+                                                 t-att-src="kanban_image('bookstore.book', 'image', record.id.raw_value)"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+
+                                        <div class="oe_kanban_details">
+                                            <strong>
+                                                <field name="title"/>
+                                            </strong>
+
+                                        </div>
+                                        <div>Author:
+                                            <field name="publisher_id"/>
+                                        </div>
+                                        <div>Publisher:
+                                            <field name="author_ids"/>
+                                        </div>
+                                        <div>Quantity in Stock:
+                                            <field name="quantity_in_stock"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--                                <div>Min Quantity:-->
+                                <!--                                    <field name="min_quantity"/>-->
+                                <!--                                </div>-->
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <record id="book_category_graph_view" model="ir.ui.view">
+            <field name="name">bookstore.book.graph</field>
+            <field name="model">bookstore.book</field>
+            <field name="arch" type="xml">
+                <graph string="Book Quantity by Category">
+                    <field name="category_names" type="row"/>
+                    <field name="quantity_in_stock" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+
+        <!--        <record id="book_author_graph_view" model="ir.ui.view">-->
+        <!--            <field name="name">bookstore.book.graph</field>-->
+        <!--            <field name="model">bookstore.book</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <graph string="Book Quantity by Author">-->
+        <!--                    <field name="author_names" type="row"/>-->
+        <!--                    <field name="quantity_in_stock" type="measure"/>-->
+        <!--                </graph>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <record id="book_pivot_view" model="ir.ui.view">
+            <field name="name">bookstore.book.pivot</field>
+            <field name="model">bookstore.book</field>
+            <field name="arch" type="xml">
+                <pivot string="Book Pivot" __validate__="1">
+                    <field name="author_ids" type="row"/>
+                    <field name="category_ids" type="col"/>
+                    <field name="quantity_in_stock" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
 
         <record id="book_tree_view" model="ir.ui.view">
             <field name="name">bookstore.book.tree</field>
             <field name="model">bookstore.book</field>
             <field name="arch" type="xml">
                 <tree string="Book" decoration-danger="quantity_in_stock &lt; min_quantity" __validate__="1">
-                    <field name="title"  decoration-success="quantity_in_stock &gt;= min_quantity"/>
+                    <field name="title" decoration-success="quantity_in_stock &gt;= min_quantity"/>
                     <field name="publication_year"/>
                     <field name="min_quantity" invisible="1"/>
-                     <field name="quantity_in_stock" invisible="1"/>
-<!--                    <field name="quantity_in_stock" options="{'decorations': 'red:quantity_in_stock &lt; min_quantity, green:quantity_in_stock &gt;= min_quantity'}"/>-->
-<!--                    <field name="quantity_in_stock" decoration-danger="quantity_in_stock &lt; min_quantity"/>-->
-<!--                     <field name="quantity_in_stock" decoration-danger="domain:[('quantity_in_stock', '<', 'min_quantity')]"/>-->
+                    <field name="quantity_in_stock" invisible="1"/>
+                    <!--                    <field name="quantity_in_stock" options="{'decorations': 'red:quantity_in_stock &lt; min_quantity, green:quantity_in_stock &gt;= min_quantity'}"/>-->
+                    <!--                    <field name="quantity_in_stock" decoration-danger="quantity_in_stock &lt; min_quantity"/>-->
+                    <!--                     <field name="quantity_in_stock" decoration-danger="domain:[('quantity_in_stock', '<', 'min_quantity')]"/>-->
                 </tree>
             </field>
         </record>
@@ -57,12 +174,18 @@
                 <search string="Book">
                     <group>
                         <field name="title"/>
-                         <field name="min_quantity"/>
-                          <field name="quantity_in_stock"/>
-                        <filter string="Books with Sale Price > 20" name="filter_sale_price_gt_20" domain="[('sale_price', '>', 20)]"/>
-<!--                         <filter string="Books with Quantity Under Min Quantity" name="filter_quantity_under_min" domain="[('quantity_in_stock', '&lt;', min_quantity)]"/>-->
-<!--                        <filter string="Books with Quantity Under Min Quantity" name="filter_quantity_under_min" domain="[('quantity_in_stock', '<', 4)]"/>-->
-<!--                        <filter name="filter_kot" string="kot" domain="[('quantity_in_stock', '&lt;', min_quantity)]"/>-->
+                        <field name="min_quantity"/>
+                        <field name="quantity_in_stock"/>
+                        <filter string="Books with Sale Price > 20" name="filter_sale_price_gt_20"
+                                domain="[('sale_price', '>', 20)]"/>
+                        <filter string="Test Filter" name="test_filter" domain="[('quantity_in_stock', '>', 0)]"/>
+                        <filter string="Books with Quantity Under Min Quantity" name="filter_quantity_under_min"
+                                domain="[('quantity_in_stock', '&lt;', 3)]"/>
+
+                        <filter string="Books with Quantity Under Min Quantity" name="filter_quantity_under_min"
+                                domain="[('quantity_in_stock', '&lt;', 'min_quantity')]"/>
+                        <!--                        <filter string="Books with Quantity Under Min Quantity" name="filter_quantity_under_min" domain="[('quantity_in_stock', '<', 4)]"/>-->
+                        <!--                        <filter name="filter_kot" string="kot" domain="[('quantity_in_stock', '&lt;', min_quantity)]"/>-->
                     </group>
                 </search>
             </field>
@@ -72,7 +195,8 @@
             <field name="name">Book</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">bookstore.book</field>
-             <field name="context">{}</field>
+            <field name="view_mode">tree,kanban,graph,pivot,form</field>
+            <field name="context">{}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     There is no example; click here to add a new Book.

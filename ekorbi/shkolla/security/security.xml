@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="school_management_access" model="ir.module.category">
+            <field name="name">School Management</field>
+        </record>
+
+        <record id="school_management_student" model="res.groups">
+            <field name="name">Student</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="school_management_access"/>
+        </record>
+        <record id="school_management_teacher" model="res.groups">
+            <field name="name">Mesues</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="school_management_access"/>
+        </record>
+
+    </data>
+</odoo>

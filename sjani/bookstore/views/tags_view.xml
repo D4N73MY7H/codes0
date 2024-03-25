@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tag_form_view" model="ir.ui.view">
+        <field name="name">Tag Form</field>
+        <field name="model">bookstore.tag</field>
+        <field name="arch" type="xml">
+            <form string="Tag">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="color" widget="color_picker"/>
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tag_tree_view" model="ir.ui.view">
+        <field name="name">Tag Tree</field>
+        <field name="model">bookstore.tag</field>
+        <field name="arch" type="xml">
+            <tree string="Tags">
+                <field name="name"/>
+                <field name="color" widget="color_picker"/>
+                 <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="tag_action" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="res_model">bookstore.tag</field>
+
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_tags" name="Tags" parent="bookstore_root" action="tag_action"/>
+</odoo>

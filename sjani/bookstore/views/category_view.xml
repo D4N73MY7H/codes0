@@ -16,6 +16,10 @@
                             <group>
                                 <field name="description"/>
                             </group>
+                            <group>
+                                <button string="Test Button" type="object" class="oe_highlight" name="action_test" confirm="Are u sure you want to press this button?????" help="Something will happen if u press this button."/>
+                                <button name="%(book_act_window)d" string="Action Button" type="action" class="oe_highlight"  confirm="Please do not press this button!!! It will redirect you to book view"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>

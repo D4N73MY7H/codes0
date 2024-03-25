@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_invoicesj" model="ir.actions.report">
+            <field name="name">Invoicesj Report</field>
+            <field name="model">bookstore.invoice.line</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bookstore.report_invoicesj</field>
+            <field name="report_file">bookstore</field>
+        </record>
+
+        <template id="report_invoicesj">
+            <t t-set="data_report_landscape" t-value="True"/>
+            <t t-set="full_width" t-value="True"/>
+            <t t-call="web.html_container">
+                <h3 t-esc="r_name"/>
+                <div>
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                             <tr>
+                                <th>Invoice Number</th>
+                                <th>Invoice Date</th>
+                                <th>Book Title</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="o">
+                                <tr>
+                                    <td>
+                                        <span t-esc="o['invoice_number']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['invoice_date']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['book_title']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['total']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

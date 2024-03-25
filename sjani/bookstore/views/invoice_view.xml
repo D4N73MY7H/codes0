@@ -23,6 +23,8 @@
                             <group>
                                 <field name="date"/>
                                 <field name="invoice_type"/>
+                                <field name="employee_id"/>
+                                  <field name="reference_record"/>
                             </group>
                         </group>
 

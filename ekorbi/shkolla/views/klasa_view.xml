@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="klasa_form_view" model="ir.ui.view">
+            <field name="name">shkolla.klasa.form</field>
+            <field name="model">shkolla.klasa</field>
+            <field name="arch" type="xml">
+                <form string="Klasa">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="viti"/>
+                                <field name="grupi"/>
+                            </group>
+                            <group>
+                                <field name="mesuesi_kujdestar_id"/>
+                                <field name="viti_shkollor_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="klasa_tree_view" model="ir.ui.view">
+            <field name="name">shkolla.klasa.tree</field>
+            <field name="model">shkolla.klasa</field>
+            <field name="arch" type="xml">
+                <tree string="Klasa">
+                    <field name="viti"/>
+                    <field name="grupi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="klasa_search_view" model="ir.ui.view">
+            <field name="name">shkolla.klasa.search</field>
+            <field name="model">shkolla.klasa</field>
+            <field name="arch" type="xml">
+                <search string="Klasa">
+                    <field name="viti"/>
+                    <field name="grupi"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="klasa_act_window" model="ir.actions.act_window">
+            <field name="name">Klasa</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shkolla.klasa</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Klasa.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Shkolla" id="klasa_menu"  sequence="10"/>
+        <menuitem name="Klasa" id="student_menu" parent="klasa_menu" action="klasa_act_window"/>
+
+    </data>
+</odoo>

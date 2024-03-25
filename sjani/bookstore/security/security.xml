@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="bookstore_access">
+            <field name="name">Bookstore</field>
+        </record>
+
+        <record id="bookstore_employee" model="res.groups">
+            <field name="name">Employee</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="bookstore_access"/>
+        </record>
+
+        <record id="bookstore_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="bookstore_access"/>
+        </record>
+
+        <record id="bookstore_customer" model="res.groups">
+            <field name="name">Customer</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="bookstore_access"/>
+        </record>
+
+
+    </data>
+</odoo>
+
+<!--        <record id="group_ProjectName_manager" model="res.groups">-->
+<!--            <field name="name">Manager</field>-->
+<!--            <field name="category_id" ref="ProjectName.ProjectName_category"/>-->
+<!--            <field name="implied_ids" eval="[(4, ref('group_ProjectName_employee'))]"/>-->
+<!--            <field name="users" eval="[(4, ref('base.user_root'))]"/>-->
+<!--        </record>-->

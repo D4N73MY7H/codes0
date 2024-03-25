@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="employee_form_view" model="ir.ui.view">
+        <field name="name">Employee Form</field>
+        <field name="model">bookstore.employee</field>
+        <field name="arch" type="xml">
+            <form string="Employee">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                        <field name="address"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="employee_tree_view" model="ir.ui.view">
+        <field name="name">Employee Tree</field>
+        <field name="model">bookstore.employee</field>
+        <field name="arch" type="xml">
+            <tree string="Employees">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_action" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">bookstore.employee</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_employees" name="Employees" parent="bookstore_root" action="employee_action"/>
+</odoo>

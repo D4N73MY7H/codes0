@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_notat_report" model="ir.ui.view">
+            <field name="name">Notat Report</field>
+            <field name="model">notat.report_ek</field>
+            <field name="arch" type="xml">
+                <form string="Notat Report">
+                    <group>
+                        <field name="vit_shkollor_id"/>
+                        <field name="klasa_lend_mes"/>
+                    </group>
+                    <footer>
+                        <button name="print_report"
+                                string="Print"
+                                type="object"
+                                data-hotkey="q"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_notat_report" model="ir.actions.act_window">
+            <field name="name">Notat report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">notat.report_ek</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_notat_report"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="notat_report_menu" name="Notat Report" parent="klasa_menu" action="action_notat_report"/>
+
+
+
+    </data>
+</odoo>

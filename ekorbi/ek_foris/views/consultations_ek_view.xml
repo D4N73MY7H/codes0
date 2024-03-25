@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="consultation_ek_form_view" model="ir.ui.view">
+            <field name="name">consultation.consultation_ek.form</field>
+            <field name="model">consultation.consultation_ek</field>
+            <field name="arch" type="xml">
+                <form string="Consultation">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="legislation"/>
+                                <field name="type"/>
+                            </group>
+                            <group>
+                                <field name="documents"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="consultation_ek_tree_view" model="ir.ui.view">
+            <field name="name">consultation.consultation_ek.tree</field>
+            <field name="model">consultation.consultation_ek</field>
+            <field name="arch" type="xml">
+                <tree string="Consultation">
+                    <field name="legislation"/>
+                    <field name="documents"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="consultation_ek_search_view" model="ir.ui.view">
+            <field name="name">consultation.consultation_ek.search</field>
+            <field name="model">consultation.consultation_ek</field>
+            <field name="arch" type="xml">
+                <search string="Consultation">
+                    <field name="legislation"/>
+                    <field name="documents"/>
+                    <field name="type"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="consultation_ek_act_window" model="ir.actions.act_window">
+            <field name="name">Consultation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">consultation.consultation_ek</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Consultation.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Keshillime" id="consultation_ek_menu" parent="formimi_intelektual_shkencor_root_ek" action="consultation_ek_act_window"/>
+
+    </data>
+</odoo>

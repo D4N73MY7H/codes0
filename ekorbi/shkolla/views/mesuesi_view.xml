@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mesuesi_form_view" model="ir.ui.view">
+            <field name="name">shkolla.mesuesi.form</field>
+            <field name="model">shkolla.mesuesi</field>
+            <field name="arch" type="xml">
+                <form string="Mesuesi">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="emri"/>
+                            <h1>
+                                <field name="emri" placeholder="Emri"/>
+                                <field name="mbiemri" placeholder="Mbiemri"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="email"/>
+                                <field name="tel"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="mesuesi_tree_view" model="ir.ui.view">
+            <field name="name">shkolla.mesuesi.tree</field>
+            <field name="model">shkolla.mesuesi</field>
+            <field name="arch" type="xml">
+                <tree string="Mesuesi">
+                    <field name="emri" placeholder="Emri"/>
+                    <field name="mbiemri" placeholder="Mbiemri"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="mesuesi_search_view" model="ir.ui.view">
+            <field name="name">shkolla.mesuesi.search</field>
+            <field name="model">shkolla.mesuesi</field>
+            <field name="arch" type="xml">
+                <search string="Mesuesi">
+                    <field name="emri" placeholder="Emri"/>
+                    <field name="mbiemri" placeholder="Mbiemri"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="mesuesi_act_window" model="ir.actions.act_window">
+            <field name="name">Mesuesi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shkolla.mesuesi</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Mesuesi" id="mesuesi_menu" parent="klasa_menu" action="mesuesi_act_window"/>
+
+    </data>
+</odoo>

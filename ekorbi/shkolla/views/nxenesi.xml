@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="nxenesi_form_view" model="ir.ui.view">
+            <field name="name">shkolla.nxenesi.form</field>
+            <field name="model">shkolla.nxenesi</field>
+            <field name="arch" type="xml">
+                <form string="Nxenesi">
+                    <sheet>
+                        <group>
+                            <group>
+                                <div class="oe_title">
+                                    <label for="emri"/>
+                                    <h1>
+                                        <field name="emri" placeholder="Emri"/>
+                                        <field name="mbiemri" placeholder="Mbiemri"/>
+                                    </h1>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="foto" widget="image" filename="img_name" class="oe_avatar"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="email"/>
+                                <field name="tel"/>
+                            </group>
+                            <group>
+                                <field name="klasa_id"/>
+                                <field name="klasa_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="book_kanban_view" model="ir.ui.view">
+            <field name="name">shkolla.nxenesi.kanban</field>
+            <field name="model">shkolla.nxenesi</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="emri"/>
+                    <field name="mbiemri"/>
+                    <field name="email"/>
+                    <field name="tel"/>
+                    <field name="klasa_id"/>
+                    <field name="id"/>
+                    <field name="foto" widget="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <b>
+                                    <div style="font-size:20px;" class="o_kanban_image_fill_top">
+                                        <img t-att-src="kanban_image('shkolla.nxenesi','foto', record.id.raw_value)"
+                                             style="height:80px;"/>
+                                    </div>
+                                    <br/>
+                                </b>
+
+                                <div class="oe_kanban_details">
+                                    <strong>
+                                        <field name="emri"/>
+                                        <field name="mbiemri"/>
+                                    </strong>
+                                </div>
+                                <div>Email:
+                                    <field name="email"/>
+                                </div>
+                                <div>Tel:
+                                    <field name="tel"/>
+                                </div>
+                                <div>Klasa:
+                                    <field name="klasa_id"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="nxenesi_tree_view" model="ir.ui.view">
+            <field name="name">shkolla.nxenesi.tree</field>
+            <field name="model">shkolla.nxenesi</field>
+            <field name="arch" type="xml">
+                <tree string="Nxenesi">
+                    <field name="emri"/>
+                    <field name="mbiemri"/>
+                    <field name="klasa_id"/>
+                    <field name="klasa_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="nxenesi_search_view" model="ir.ui.view">
+            <field name="name">shkolla.nxenesi.search</field>
+            <field name="model">shkolla.nxenesi</field>
+            <field name="arch" type="xml">
+                <search string="Nxenesi">
+                    <field name="emri"/>
+                    <field name="mbiemri"/>
+                    <field name="klasa_id"/>
+                    <field name="klasa_ids"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="nxenesi_act_window" model="ir.actions.act_window">
+            <field name="name">Nxenesi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shkolla.nxenesi</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Nxenesi.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Nxenesi" id="nxenesi_menu" parent="klasa_menu" action="nxenesi_act_window"/>
+
+    </data>
+</odoo>

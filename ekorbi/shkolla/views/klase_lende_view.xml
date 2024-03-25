@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="klase_lende_form_view" model="ir.ui.view">
+            <field name="name">shkolla.klase_lende.form</field>
+            <field name="model">shkolla.klase_lende</field>
+            <field name="arch" type="xml">
+                <form string="Klase Lende">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="klasa_id"/>
+                                <field name="lenda_id"/>
+                                <field name="mesuesi_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="klase_lende_tree_view" model="ir.ui.view">
+            <field name="name">shkolla.klase_lende.tree</field>
+            <field name="model">shkolla.klase_lende</field>
+            <field name="arch" type="xml">
+                <tree string="Klase Lende">
+                    <field name="klasa_id"/>
+                    <field name="lenda_id"/>
+                    <field name="mesuesi_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="klase_lende_search_view" model="ir.ui.view">
+            <field name="name">shkolla.klase_lende.search</field>
+            <field name="model">shkolla.klase_lende</field>
+            <field name="arch" type="xml">
+                <search string="Klase Lende">
+                    <field name="klasa_id"/>
+                    <field name="lenda_id"/>
+                    <field name="mesuesi_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="klase_lende_act_window" model="ir.actions.act_window">
+            <field name="name">Klase Lende</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shkolla.klase_lende</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Klase Lende.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Klase Lende Mesues" id="klase_lende_menu" parent="klasa_menu" action="klase_lende_act_window"/>
+
+    </data>
+</odoo>

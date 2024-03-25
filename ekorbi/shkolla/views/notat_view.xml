@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="nota_form_view" model="ir.ui.view">
+            <field name="name">shkolla.nota.form</field>
+            <field name="model">shkolla.nota</field>
+            <field name="arch" type="xml">
+                <form string="Notat">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="klasa_lende_id"/>
+                                <field name="nxenes_id"/>
+                                <field name="viti_shkollor"/>
+                                <field name="nota"/>
+                                <field name="mesuesi"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="nota_tree_view" model="ir.ui.view">
+            <field name="name">shkolla.nota.tree</field>
+            <field name="model">shkolla.nota</field>
+            <field name="arch" type="xml">
+                <tree string="Notat">
+                    <field name="nota"/>
+                    <field name="nxenes_id"/>
+                    <field name="mesuesi"/>
+                    <field name="lenda"/>
+                </tree>
+            </field>
+        </record>
+        <record id="nota_form_view" model="ir.ui.view">
+            <field name="name">shkolla.nota.form</field>
+            <field name="model">shkolla.nota</field>
+            <field name="arch" type="xml">
+                <form string="Notat">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="klasa_lende_id"/>
+                                <field name="nxenes_id"/>
+                                <field name="viti_shkollor"/>
+                                <field name="nota"/>
+                                <field name="mesuesi"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="nota_tree_view" model="ir.ui.view">
+            <field name="name">shkolla.nota.tree</field>
+            <field name="model">shkolla.nota</field>
+            <field name="arch" type="xml">
+                <tree string="Notat">
+                    <field name="nota"/>
+                    <field name="nxenes_id"/>
+                    <field name="mesuesi"/>
+                    <field name="lenda"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="nota_graph" model="ir.ui.view">
+            <field name="name">shkolla.nota.graph</field>
+            <field name="model">shkolla.nota</field>
+            <field name="arch" type="xml">
+                <graph string="Grafiku i Notave" sample="0" stacked="False">
+                    <field name="viti_shkollor"/>
+                    <field name="nota_int" avg="avg"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="nota_pivot" model="ir.ui.view">
+            <field name="name">shkolla.nota.graph</field>
+            <field name="model">shkolla.nota</field>
+            <field name="arch" type="xml">
+                <pivot string="Notat">
+                    <field name="viti_shkollor" type="row"/>
+                    <field name="nota" type="col"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="nota_search_view" model="ir.ui.view">
+            <field name="name">shkolla.nota.search</field>
+            <field name="model">shkolla.nota</field>
+            <field name="arch" type="xml">
+                <search string="Notat">
+                    <field name="nota"/>
+                    <field name="nxenes_id"/>
+                    <field name="mesuesi"/>
+                    <field name="lenda"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="nota_act_window" model="ir.actions.act_window">
+            <field name="name">Notat</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shkolla.nota</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Notat.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Notat" id="nota_menu" parent="klasa_menu" action="nota_act_window"/>
+
+    </data>
+</odoo>

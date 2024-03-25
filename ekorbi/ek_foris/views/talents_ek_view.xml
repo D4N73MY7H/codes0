@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="talents_ek_form_view" model="ir.ui.view">
+            <field name="name">talents.talents_ek.form</field>
+            <field name="model">talents.talents_ek</field>
+            <field name="arch" type="xml">
+                <form string="Talents">
+                    <group>
+                        <field name="name"/>
+                        <field name="nr_amzes"/>
+                        <field name="nr_rendor"/>
+                    </group>
+                    <group>
+                        <field name="age"/>
+                        <field name="student_email"/>
+                        <field name="cel"/>
+                        <field name="image" filename="img_name" widget="image"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="talents_ek_tree_view" model="ir.ui.view">
+            <field name="name">talents.talents_ek.tree</field>
+            <field name="model">talents.talents_ek</field>
+            <field name="arch" type="xml">
+                <tree string="Talents">
+                    <field name="name"/>
+                    <field name="nr_amzes"/>
+                    <field name="student_email"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="talents_ek_search_view" model="ir.ui.view">
+            <field name="name">talents.talents_ek.search</field>
+            <field name="model">talents.talents_ek</field>
+            <field name="arch" type="xml">
+                <search string="Talents">
+                    <field name="name"/>
+                    <field name="nr_amzes"/>
+                    <field name="age"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="talents_ek_act_window" model="ir.actions.act_window">
+            <field name="name">Talents</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">talents.talents_ek</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Product.
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="formimi_intelektual_shkencor_root_ek" name="Foris" sequence="10"/>
+
+        <menuitem name="Talente te reja" id="student_menu" parent="formimi_intelektual_shkencor_root_ek"
+                  action="talents_ek_act_window"/>
+
+    </data>
+</odoo>

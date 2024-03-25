@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_notat_ek" model="ir.actions.report">
+            <field name="name">Notat Vjetore Routes Report</field>
+            <field name="model">shkolla.nota</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">shkolla.report_notat</field>
+            <field name="report_file">shkolla</field>
+        </record>
+
+        <template id="report_notat">
+        <t t-set="data_report_landscape" t-value="True"/>
+        <t t-set="full_width" t-value="True"/>
+        <t t-call="web.html_container">
+                <h3 t-esc="r_name"/>
+            <div>
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Mesuesi</th>
+                            <th>Lenda</th>
+                            <th>Viti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="o">
+                            <tr>
+                                <td>
+                                    <span t-esc="o['mesuesi']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="o['lenda']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="o['viti']"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    </data>
+</odoo>
