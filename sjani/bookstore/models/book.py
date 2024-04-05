@@ -1,5 +1,5 @@
-from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo import models, fields, api,_
+from odoo.exceptions import UserError, ValidationError
 
 
 class Book(models.Model):
@@ -29,6 +29,29 @@ class Book(models.Model):
 
     category_names = fields.Char(string='Category Names', related='category_ids.name', store=True)
     author_names = fields.Char(string='Author_names', related='author_ids.name', store=True)
+    lang = fields.Char(string='Lang', required=False)
+
+
+    @api.model
+    def test_cron_job(self):
+        books = self.env['bookstore.book'].search([]).filtered(lambda book: book.quantity_in_stock <= book.min_quantity)
+        print(books)
+        for book in books:
+            print(book.title)
+            template = self.env.ref('bookstore.bookstore_mail_template')
+            template.send_mail(book.id)
+
+
+    def action_send_mail(self):
+        template = self.env.ref('bookstore.bookstore_mail_template')
+        for rec in self:
+            template.send_mail(rec.id)
+
+
+
+
+
+
 
     @api.constrains('quantity_in_stock')
     def check_stock_levels(self):
@@ -36,6 +59,17 @@ class Book(models.Model):
             if book.quantity_in_stock < 0:
                 raise UserError("Kujdes Sasia eshte e pa mjaftueshme!")
                 # pass
+
+    def action_share_whatsapp(self):
+        # if not self.tel:
+        #     raise ValidationError(_("gabim"))
+        message = 'Hi %s' % self.author_names
+        whatsapp_api_url = "https://api.whatsapp.com/send?phone=%s&text=%s" % (self.publisher_id.email, message)
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            'url': whatsapp_api_url
+        }
 
     # _sql_constraints = [
     #     ('quantity_in_stock', 'check(quantity_in_stock >= 0)', 'Kujdes sql!'),

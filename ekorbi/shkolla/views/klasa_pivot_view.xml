@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="klasa_tree_pivot_view" model="ir.ui.view">
+            <field name="name">shkolla.klasa.pivot.tree</field>
+            <field name="model">shkolla.klasa.pivot</field>
+            <field name="arch" type="xml">
+                <tree string="Klasa" default_order="viti desc, grupi desc">
+                    <field name="viti"/>
+                    <field name="grupi"/>
+                    <field name="avg_score"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="klasa_pivot_view" model="ir.ui.view">
+            <field name="name">shkolla.klasa.pivot.pivot</field>
+            <field name="model">shkolla.klasa.pivot</field>
+            <field name="arch" type="xml">
+                <pivot string="Klasa Pivot">
+                    <field name="viti" type="row"/>
+                    <field name="grupi" type="col"/>
+                    <field name="avg_score" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+
+
+        <record id="klasa_pivot_act_window" model="ir.actions.act_window">
+            <field name="name">Klasa Pivot</field>
+            <field name="res_model">shkolla.klasa.pivot</field>
+            <field name="view_mode">tree,pivot</field>
+        </record>
+
+        <menuitem name="Klasa Pivot" id="kl_pivot_menu" parent="klasa_menu" action="klasa_pivot_act_window"/>
+
+    </data>
+</odoo>

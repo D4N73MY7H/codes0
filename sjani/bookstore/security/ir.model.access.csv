@@ -1,8 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_bookstore_employee_book,Bookstore Book,bookstore.model_bookstore_book,bookstore_employee,1,1,0,0
-access_bookstore_employee_category,Bookstore Category,bookstore.model_bookstore_category,bookstore_employee,1,1,0,0
-access_bookstore_employee_author,Bookstore Author,bookstore.model_bookstore_author,bookstore_employee,1,1,0,0
-access_bookstore_employee_publisher,Bookstore Publisher,bookstore.model_bookstore_publisher,bookstore_employee,1,1,0,0
+access_bookstore_employee_book,Bookstore Book,bookstore.model_bookstore_book,bookstore_employee,1,1,1,0
+access_bookstore_employee_category,Bookstore Category,bookstore.model_bookstore_category,bookstore_employee,1,1,1,0
+access_bookstore_employee_author,Bookstore Author,bookstore.model_bookstore_author,bookstore_employee,1,1,1,0
+access_bookstore_employee_publisher,Bookstore Publisher,bookstore.model_bookstore_publisher,bookstore_employee,1,1,1,0
 access_bookstore_employee_tag,Bookstore Tags,bookstore.model_bookstore_tag,bookstore_employee,1,1,0,0
 access_bookstore_manager_book,Bookstore Manager Book,bookstore.model_bookstore_book,bookstore_manager,1,1,1,1
 access_bookstore_manager_category,Bookstore Manager Category,bookstore.model_bookstore_category,bookstore_manager,1,1,1,1

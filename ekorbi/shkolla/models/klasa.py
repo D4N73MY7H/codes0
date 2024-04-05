@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, tools, _
 from odoo.exceptions import ValidationError
 
 
@@ -6,6 +6,7 @@ class ShkollaKlasa(models.Model):
     _name = 'shkolla.klasa'
     _description = 'Klasa'
     _rec_name = 'viti'
+    _auto = False
 
     viti = fields.Selection(
         string='Viti', required=False,
@@ -27,22 +28,35 @@ class ShkollaKlasa(models.Model):
 
 class ShkollaNxenesi(models.Model):
     _name = 'shkolla.nxenesi'
+    _inherit = 'mail.thread', 'mail.activity.mixin'
     _description = 'Nxenesi'
     _rec_name = 'emri'
 
-    emri = fields.Char(string='Emri', required=False)
-    mbiemri = fields.Char(string='Mbiemri', required=False)
-    email = fields.Char(string='Email', required=False)
-    tel = fields.Char(string='Tel', required=False)
+    emri = fields.Char(string='Emri', required=False, tracking=True)
+    mbiemri = fields.Char(string='Mbiemri', required=False, tracking=True)
+    email = fields.Char(string='Email', required=False, tracking=True)
+    tel = fields.Char(string='Tel', required=False, tracking=True)
     klasa_id = fields.Many2one(comodel_name='shkolla.klasa', string='Klasa aktuale', required=False)
     klasa_ids = fields.Many2many(comodel_name='shkolla.klasa', string='Klasat me pare', required=False)
     filename = fields.Char(string='Filename')
     foto = fields.Binary(string="Foto", attachment=True)
+    parent_email = fields.Char(string='Emaili Prinderit', required=False)
 
     # nota_ids = fields.One2many(comodel_name='shkolla.nota',inverse_name='nxenes_id',string='Nota',required=False)
 
     def name_get(self):
         return [(rec.id, "%s %s " % (rec.emri, rec.mbiemri)) for rec in self]
+
+    def action_share_whatsapp(self):
+        if not self.tel:
+            raise ValidationError(_("Nr tel gabim"))
+        message = 'Hi %s' % self.emri
+        whatsapp_api_url = "https://api.whatsapp.com/send?phone=%s&text=%s" % (self.tel, message)
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            'url': whatsapp_api_url
+        }
 
 
 class ShkollaMesuesi(models.Model):
@@ -101,12 +115,13 @@ class ShkollaNotat(models.Model):
                    ('8', 8),
                    ('9', 9),
                    ('10', 10), ], )
-    nota_int=fields.Integer(compute="convert_nota_int")
+    nota_int = fields.Integer(compute="convert_nota_int", string='Nota int', store=True)
     viti_shkollor = fields.Char(related='klasa_lende_id.klasa_id.viti_shkollor_id.viti_shkollor',
                                 string='Viti_shkollor', required=False, store=True)
     klasa_lende_id = fields.Many2one(comodel_name='shkolla.klase_lende', string='Klasa lende mesues', required=False)
     mesuesi = fields.Char(related='klasa_lende_id.mesuesi_id.emri', string='Mesuesi', required=False)
     lenda = fields.Char(related='klasa_lende_id.lenda_id.emri', string='Lenda', required=False)
+    lang = fields.Char(string='Lang', required=False)
 
     @api.constrains('nxenes_id', 'klasa_lende_id')
     def check_nxenesi_klasa_match(self):
@@ -116,11 +131,19 @@ class ShkollaNotat(models.Model):
                 klasa_lende = rec.klasa_lende_id
                 if nxenes_klasa != klasa_lende.klasa_id:
                     raise ValidationError('Nxënësi dhe klasa në tabelën e notave nuk përputhen!')
+
     @api.depends('nota')
     def convert_nota_int(self):
         for rec in self:
-            rec.nota_int=int(rec.nota)
+            rec.nota_int = int(rec.nota)
 
+    def check_grades(self):
+        template = self.env.ref('shkolla.parent_mail_template')
+        notat = self.env['shkolla.nota'].search([])
+        print('hello')
+        for n in notat:
+            if n.nota_int == 4:
+                template.send_mail(n.id)
 
 
 class ShkollaKlaseLende(models.Model):

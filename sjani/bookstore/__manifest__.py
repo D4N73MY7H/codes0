@@ -10,6 +10,9 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'data/bookstore_cron.xml',
+        'data/mail_template_data.xml',
+        'data/mail_sales_data.xml',
         'views/bookstore_sequence_view.xml',
         'views/book_view.xml',
         'views/author_view.xml',
@@ -19,6 +22,7 @@
         'views/dashboard_view.xml',
         'views/tags_view.xml',
         'views/employee_view.xml',
+        'views/book_pivot.xml',
         'wizard/invoicesj_report.xml',
         'report/invoicesj_report.xml',
     ],

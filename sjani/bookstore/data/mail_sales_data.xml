@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="daily_turnover_mail_template" model="mail.template">
+            <field name="name">Bookstore Turnover</field>
+            <field name="model_id" ref="bookstore.model_bookstore_invoice"/>
+            <field name="subject">Daily Turnover Details</field>
+            <field name="email_from">{{ user.email }}</field>
+            <field name="email_to">{{ object.employee_id.email }}</field>
+
+            <field name="body_html" type="html">
+                <h5>Hello <t t-out="object.employee_id.name"/>,</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Daily turnover</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="ctx.get('daily_turnover')" t-as="emp_turnover">
+                            <tr>
+                                <td>
+                                    <t t-out="emp_turnover['employee']"/>
+                                </td>
+                                <td>
+                                    <t t-out="emp_turnover['daily_turnover']"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </field>
+
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

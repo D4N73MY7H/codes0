@@ -8,3 +8,4 @@ class Author(models.Model):
     name = fields.Char(string='Author Name', required=True)
     birthdate = fields.Date(string='Birthdate')
     nationality = fields.Char(string='Nationality')
+

@@ -1,11 +1,15 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-school_management_student_nxenesi,Shkolla Nxenes,shkolla.model_shkolla_nxenesi,school_management_student,1,1,0,0
+school_management_student_nxenesi,Shkolla Nxenes,shkolla.model_shkolla_nxenesi,school_management_student,1,1,1,0
 school_management_student_mesuesi,Shkolla Mesues,shkolla.model_shkolla_mesuesi,school_management_student,1,1,0,0
 school_management_student_klasa,Shkolla Klasa,shkolla.model_shkolla_klasa,school_management_student,1,1,0,0
 school_management_student_lenda,Shkolla Lenda,shkolla.model_shkolla_lenda,school_management_student,1,1,0,0
 school_management_student_nota,Shkolla Nota,shkolla.model_shkolla_nota,school_management_student,1,1,0,0
+school_management_student_viti,Shkolla Viti,shkolla.model_shkolla_viti,school_management_student,1,1,0,0
+school_management_student_klase_lende,Shkolla Klase Lende,shkolla.model_shkolla_klase_lende,school_management_student,1,1,0,0
 school_management_teacher_nxenesi,Shkolla Nxenes,shkolla.model_shkolla_nxenesi,school_management_teacher,1,1,1,0
 school_management_teacher_mesuesi,Shkolla Mesues,shkolla.model_shkolla_mesuesi,school_management_teacher,1,1,1,0
 school_management_teacher_klasa,Shkolla Klasa,shkolla.model_shkolla_klasa,school_management_teacher,1,1,1,0
 school_management_teacher_lenda,Shkolla Lenda,shkolla.model_shkolla_lenda,school_management_teacher,1,1,1,0
 school_management_teacher_nota,Shkolla Nota,shkolla.model_shkolla_nota,school_management_teacher,1,1,1,0
+school_management_teacher_viti,Shkolla Viti,shkolla.model_shkolla_viti,school_management_teacher,1,1,0,0
+school_management_teacher_klase_lende,Shkolla Klase Lende,shkolla.model_shkolla_klase_lende,school_management_teacher,1,1,0,0

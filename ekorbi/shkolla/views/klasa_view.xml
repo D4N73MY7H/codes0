@@ -57,7 +57,7 @@
             </field>
         </record>
 
-        <menuitem name="Shkolla" id="klasa_menu"  sequence="10"/>
+        <menuitem name="Shkolla" id="klasa_menu"  sequence="10" web_icon="shkolla,static/school-icon.png"/>
         <menuitem name="Klasa" id="student_menu" parent="klasa_menu" action="klasa_act_window"/>
 
     </data>

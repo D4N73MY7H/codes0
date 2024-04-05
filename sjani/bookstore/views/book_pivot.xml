@@ -1,0 +1,53 @@
+<odoo>
+
+
+    <record id="most_sold_books_form_view" model="ir.ui.view">
+        <field name="name">bookstore.most.sold.books.form</field>
+        <field name="model">bookstore.most.sold.books</field>
+        <field name="arch" type="xml">
+            <form string="Most Sold Books">
+                <sheet>
+                    <group>
+                        <field name="employee_name"/>
+                        <field name="book_title"/>
+                        <field name="category_name"/>
+                        <field name="total_quantity_sold"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="most_sold_books_tree_view" model="ir.ui.view">
+        <field name="name">bookstore.most.sold.books.tree</field>
+        <field name="model">bookstore.most.sold.books</field>
+        <field name="arch" type="xml">
+            <tree string="Most Sold Books">
+                <field name="employee_name"/>
+                <field name="book_title"/>
+                <field name="total_quantity_sold"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="most_sold_books_pivot_view" model="ir.ui.view">
+        <field name="name">bookstore.most.sold.books.pivot</field>
+        <field name="model">bookstore.most.sold.books</field>
+        <field name="arch" type="xml">
+            <pivot string="Most Sold Books Pivot">
+                <field name="employee_name" type="row"/>
+                <field name="book_title" type="col"/>
+                <field name="total_quantity_sold" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="most_sold_books_action" model="ir.actions.act_window">
+        <field name="name">Most Sold Books</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bookstore.most.sold.books</field>
+        <field name="view_mode">tree,form,pivot</field>
+    </record>
+
+    <menuitem id="menu_most_sold_books" name="Most Sold Books" parent="bookstore_root" action="most_sold_books_action"/>
+</odoo>

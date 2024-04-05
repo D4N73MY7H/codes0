@@ -6,7 +6,7 @@
     'sequence': -100,
     'author': 'Commprog',
     'website': 'Website',
-    'depends': ['base','board'],
+    'depends': ['base','board','mail'],
     "application": True,
     "installable": True,
     'data': [
@@ -20,6 +20,9 @@
         'views/notat_view.xml',
         'views/klase_lende_view.xml',
         'views/dashboard_view.xml',
+        'views/klasa_pivot_view.xml',
+        'data/nota_cron.xml',
+        'data/mail_template.xml',
         # 'views/lende_mesues_view.xml',
         # 'wizard/notat_report.xml',
         # 'report/notat_report.xml',

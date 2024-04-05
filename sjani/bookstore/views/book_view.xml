@@ -9,6 +9,10 @@
                     <header>
                         <button string="Check Stock Levels" type="object" class="oe_highlight"
                                 name="check_stock_levels"/>
+
+                         <button name="action_send_mail" string="Send Mail" type="object" class="oe_highlight"/>
+                        <button name="action_share_whatsapp" string="Share in Whatsapp" class="oe_highlight"
+                                icon="fa-whatsapp" type="object"/>
                     </header>
                     <sheet>
                         <h2>
@@ -26,7 +30,7 @@
                                 <field name="min_quantity"/>
                                 <field name="publication_year"/>
                                 <field name="publisher_id"/>
-                                <field name="tags" widget="many2many_tags"/>
+                                <field name="tags" widget="many2many_tags" options="{'color_field': 'color'}"/>
                                 <field name="image" filename="img_name" class="oe_avatar" widget="image"/>
                             </group>
                             <group>
@@ -38,14 +42,16 @@
 
                         <notebook>
                             <page string="Summarie">
-                                <field name="Summarie"/>
+                                <field name="Summarie" placeholder="Enter your summarie"
+                                       options="{'collaborative': true, 'resizable':true, 'codeview':true}"/>
                             </page>
                             <page string="Awards">
-                                <field name="Awards"/>
+                                <field name="Awards" placeholder="Enter your awards"
+                                       options="{'collaborative': true, 'resizable':true, 'codeview':true}"/>
                             </page>
-                            <page string="Tags">
-                                <field name="tags" widget="many2many_tags"/>
-                            </page>
+                            <!--                            <page string="Tags">-->
+                            <!--                                <field name="tags" widget="many2many_tags"/>-->
+                            <!--                            </page>-->
 
 
                         </notebook>
@@ -157,7 +163,9 @@
             <field name="arch" type="xml">
                 <tree string="Book" decoration-danger="quantity_in_stock &lt; min_quantity" __validate__="1">
                     <field name="title" decoration-success="quantity_in_stock &gt;= min_quantity"/>
+                    <field name="publisher_id" widget="many2one_avatar"/>
                     <field name="publication_year"/>
+                    <field name="tags" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <field name="min_quantity" invisible="1"/>
                     <field name="quantity_in_stock" invisible="1"/>
                     <!--                    <field name="quantity_in_stock" options="{'decorations': 'red:quantity_in_stock &lt; min_quantity, green:quantity_in_stock &gt;= min_quantity'}"/>-->
@@ -204,7 +212,7 @@
             </field>
         </record>
 
-        <menuitem id="bookstore_root" name="BookStore" sequence="10"/>
+        <menuitem id="bookstore_root" name="BookStore" sequence="10" web_icon="bookstore,static/bookstore_icon.jpg"/>
         <menuitem name="Book" id="book_menu" parent="bookstore_root" action="book_act_window"/>
     </data>
 </odoo>

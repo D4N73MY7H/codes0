@@ -6,15 +6,19 @@
             <field name="model">shkolla.nota</field>
             <field name="arch" type="xml">
                 <form string="Notat">
+                    <header>
+                        <button name="check_grades" string="Dergo email prindit" class="oe_highlight" data-hotkey="m"
+                                type="object"/>
+                    </header>
                     <sheet>
                         <group>
-                            <group>
-                                <field name="klasa_lende_id"/>
-                                <field name="nxenes_id"/>
-                                <field name="viti_shkollor"/>
-                                <field name="nota"/>
-                                <field name="mesuesi"/>
-                            </group>
+                            <field name="klasa_lende_id"/>
+                            <field name="nxenes_id"/>
+                            <field name="viti_shkollor"/>
+                            <field name="nota"/>
+                            <field name="mesuesi"/>
+                            <field name="nota_int"/>
+                            <field name="lang"/>
                         </group>
                     </sheet>
                 </form>
@@ -30,38 +34,7 @@
                     <field name="nxenes_id"/>
                     <field name="mesuesi"/>
                     <field name="lenda"/>
-                </tree>
-            </field>
-        </record>
-        <record id="nota_form_view" model="ir.ui.view">
-            <field name="name">shkolla.nota.form</field>
-            <field name="model">shkolla.nota</field>
-            <field name="arch" type="xml">
-                <form string="Notat">
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="klasa_lende_id"/>
-                                <field name="nxenes_id"/>
-                                <field name="viti_shkollor"/>
-                                <field name="nota"/>
-                                <field name="mesuesi"/>
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-        <record id="nota_tree_view" model="ir.ui.view">
-            <field name="name">shkolla.nota.tree</field>
-            <field name="model">shkolla.nota</field>
-            <field name="arch" type="xml">
-                <tree string="Notat">
-                    <field name="nota"/>
-                    <field name="nxenes_id"/>
-                    <field name="mesuesi"/>
-                    <field name="lenda"/>
+                    <field name="nota_int"/>
                 </tree>
             </field>
         </record>

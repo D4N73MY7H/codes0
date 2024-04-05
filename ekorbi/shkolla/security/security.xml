@@ -16,5 +16,12 @@
             <field name="category_id" ref="school_management_access"/>
         </record>
 
+        <record id="student_record_rule" model="ir.rule">
+            <field name="name">See only his Student</field>
+            <field name="model_id" ref="model_shkolla_nxenesi"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('school_management_student'))]"/>
+        </record>
+
     </data>
 </odoo>

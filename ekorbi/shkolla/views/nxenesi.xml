@@ -7,6 +7,10 @@
             <field name="model">shkolla.nxenesi</field>
             <field name="arch" type="xml">
                 <form string="Nxenesi">
+                    <header>
+                        <button name="action_share_whatsapp" string="Share in Whatsapp" class="oe_highlight"
+                                icon="fa-whatsapp" type="object"/>
+                    </header>
                     <sheet>
                         <group>
                             <group>
@@ -26,6 +30,7 @@
                             <group>
                                 <field name="email"/>
                                 <field name="tel"/>
+                                <field name="parent_email"/>
                             </group>
                             <group>
                                 <field name="klasa_id"/>
@@ -33,6 +38,11 @@
                             </group>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -55,7 +65,7 @@
                                 <b>
                                     <div style="font-size:20px;" class="o_kanban_image_fill_top">
                                         <img t-att-src="kanban_image('shkolla.nxenesi','foto', record.id.raw_value)"
-                                             style="height:80px;"/>
+                                             style="height:80px;" alt="imazh"/>
                                     </div>
                                     <br/>
                                 </b>

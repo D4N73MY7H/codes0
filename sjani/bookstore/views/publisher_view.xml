@@ -16,6 +16,8 @@
                             <group>
                                 <field name="address"/>
                                 <field name="contact_details"/>
+                                <field name="image"/>
+                                <field name="email"/>
                             </group>
                         </group>
                     </sheet>
